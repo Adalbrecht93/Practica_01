@@ -55,57 +55,57 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void enviar(){
+        public void enviar(View view){
 
-        EditText namecontent = (EditText) findViewById(R.id.Name); //(EditText) -> Hacer un cast
-        String name = namecontent.getText().toString();
+            EditText namecontent = (EditText) findViewById(R.id.Name); //(EditText) -> Hacer un cast
+            String name = namecontent.getText().toString();
 
-        EditText surnamecontent = (EditText) findViewById(R.id.Surname);
-        String surname = surnamecontent.getText().toString();
+            EditText surnamecontent = (EditText) findViewById(R.id.Surname);
+            String surname = surnamecontent.getText().toString();
 
-        RadioGroup sexcontent = (RadioGroup) findViewById(R.id.radioSex);
-        int selected_radio = sexcontent.getCheckedRadioButtonId();
-        RadioButton radio_sex_button = (RadioButton) findViewById(selected_radio);
-        String sex = radio_sex_button.getText().toString();
+            RadioGroup sexcontent = (RadioGroup) findViewById(R.id.radioSex);
+            int selected_radio = sexcontent.getCheckedRadioButtonId();
+            RadioButton radio_sex_button = (RadioButton) findViewById(selected_radio);
+            String sex = radio_sex_button.getText().toString();
 
-        CheckBox jobcontent = (CheckBox) findViewById(R.id.trab);
-        String job = "No treballa";
-        CheckBox studycontent = (CheckBox) findViewById(R.id.est);
-        String study = "No estudia";
+            CheckBox jobcontent = (CheckBox) findViewById(R.id.trab);
+            String job = "No treballa";
+            CheckBox studycontent = (CheckBox) findViewById(R.id.est);
+            String study = "No estudia";
 
-        if (jobcontent.isChecked()) {
-            job = "Treballa";
+            if (jobcontent.isChecked()) {
+                job = "Treballa";
+            }
+
+            if (studycontent.isChecked()) {
+                study = "Estudia";
+            }
+
+            ToggleButton togleboton = (ToggleButton) findViewById(R.id.togglebutton);
+            String uni = "No té estudis universitaris";
+
+            if (togleboton.isChecked()){
+                uni = "Té estudis universitaris";
+            }
+
+            SeekBar kg = (SeekBar) findViewById(R.id.Peso);
+
+            int weight = kg.getProgress();
+
+            EditText borncontent = (EditText) findViewById(R.id.data);
+            String born = borncontent.getText().toString();
+
+
+            Intent in= new Intent(this,MainActivity_2.class);
+            in.putExtra(NOMBRE, name);
+            in.putExtra(APELLIDO, surname);
+            in.putExtra(SEXO, sex);
+            in.putExtra(TRAB, job);
+            in.putExtra(EST, study);
+            in.putExtra(UNI, uni);
+            in.putExtra(PESO, weight);
+            in.putExtra(FECHA, born);
+            startActivity(in);
+
         }
-
-        if (studycontent.isChecked()) {
-            study = "Estudia";
-        }
-
-        ToggleButton togleboton = (ToggleButton) findViewById(R.id.togglebutton);
-        String uni = "No té estudis universitaris";
-
-        if (togleboton.isChecked()){
-            uni = "Té estudis universitaris";
-        }
-
-        SeekBar kg = (SeekBar) findViewById(R.id.Peso);
-
-        int weight = kg.getProgress();
-
-        EditText borncontent = (EditText) findViewById(R.id.data);
-        String born = borncontent.getText().toString();
-
-
-        Intent in= new Intent(this,MainActivity_2.class);
-        in.putExtra(NOMBRE, name);
-        in.putExtra(APELLIDO, surname);
-        in.putExtra(SEXO, sex);
-        in.putExtra(TRAB, job);
-        in.putExtra(EST, study);
-        in.putExtra(UNI, uni);
-        in.putExtra(PESO, weight);
-        in.putExtra(FECHA, born);
-        startActivity(in);
-
-    }
 }

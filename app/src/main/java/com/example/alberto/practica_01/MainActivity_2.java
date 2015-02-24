@@ -31,6 +31,7 @@ public class MainActivity_2 extends ActionBarActivity {
         t.setText(Name + "" + Surname + "\n" + Sex + "\n" + Job + " y " + Stu + "\n" + Uni + "\n" + Weight + "\n" + Date);
 
         setContentView(R.layout.activity_main_activity_2);
+        setContentView(t);
     }
 
 
